@@ -8,7 +8,6 @@ document.getElementById('drop-area').addEventListener('drop', (event) => {
     event.preventDefault();
     let files = event.dataTransfer.files;
     let previewArea = document.getElementById('preview-area');
-    previewArea.innerHTML = ''; // Clear existing previews
     for (let i = 0; i < files.length; i++) {
         if (files[i].type.startsWith('image/')) {
             let url = URL.createObjectURL(files[i]);
@@ -18,13 +17,14 @@ document.getElementById('drop-area').addEventListener('drop', (event) => {
             });
             let img = document.createElement('img');
             img.src = url;
-            img.style.width = '100px'; // Set a fixed width for the preview images
+            img.style.width = '300px'; // Set a fixed width for the preview images
             img.style.height = 'auto';
             img.style.margin = '10px';
             previewArea.appendChild(img); // Add the preview image to the preview area
         }
     }
 });
+
 
 document.getElementById('download-btn').addEventListener('click', () => {
     let pptx = new PptxGenJS();
