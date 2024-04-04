@@ -7,20 +7,6 @@ document.getElementById('drop-area').addEventListener('dragover', (event) => {
 document.getElementById('drop-area').addEventListener('drop', (event) => {
     event.preventDefault();
     let files = event.dataTransfer.files;
-    for (let i = 0; i < files.length; i++) {
-        if (files[i].type.startsWith('image/')) {
-            let url = URL.createObjectURL(files[i]);
-            images.push({
-                name: files[i].name,
-                url: url
-            });
-        }
-    }
-});
-
-document.getElementById('drop-area').addEventListener('drop', (event) => {
-    event.preventDefault();
-    let files = event.dataTransfer.files;
     let previewArea = document.getElementById('preview-area');
     previewArea.innerHTML = ''; // Clear existing previews
     for (let i = 0; i < files.length; i++) {
@@ -38,4 +24,13 @@ document.getElementById('drop-area').addEventListener('drop', (event) => {
             previewArea.appendChild(img); // Add the preview image to the preview area
         }
     }
+});
+
+document.getElementById('download-btn').addEventListener('click', () => {
+    let pptx = new PptxGenJS();
+    images.forEach((image) => {
+        let slide = pptx.addSlide();
+        slide.addImage({ path: image.url, x: 1, y: 1, w: 8, h: 6 });
+    });
+    pptx.writeFile({ fileName: 'Images.pptx' });
 });
