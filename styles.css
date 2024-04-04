@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#drop-area p {
+    margin: 0;
+    font-size: 1.2em;
+    color: #666;
+}
+
+#download-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+#download-btn:hover {
+    background-color: #45a049;
+}
